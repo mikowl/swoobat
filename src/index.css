@@ -32,6 +32,15 @@
   padding: 2rem;
   text-align: center;
 }
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url('assets/fonts/PokemonSolidNormal.woff2') format('woff2'),
+        url('assets/fonts/PokemonSolidNormal.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -46,7 +55,7 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url("src/assets/pokemon.jpg");
+  background-image: url("src/assets/pokemonbg-retro.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,16 +63,35 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-family: 'Pokemon Solid';
+  font-size: 4rem;
   line-height: 1.1;
+  letter-spacing: 4px;
+  font-size: 4rem;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #3367b0;
+  color: #ffcb03;
+  text-shadow: -1px 1px #3367b0,
+  -2px 2px #3367b0,
+  -3px 3px #3367b0,
+  -4px 4px #3367b0,
+  -5px 5px #3367b0;
 }
 
 h1.poke-title {
-  color: var(--yellow);
-  font-weight: 800;
-  text-shadow: 0px 6px 11px rgb(0 0 0 / 38%);
-  margin: 0 0 -9px;
-  text-transform: uppercase;
+  font-family: 'Pokemon Solid';
+  font-size: 4rem;
+  line-height: 1.1;
+  letter-spacing: 4px;
+    font-size: 4rem;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: #3367b0;
+    color: #ffcb03;
+    text-shadow: -1px 1px #3367b0,
+    -2px 2px #3367b0,
+    -3px 3px #3367b0,
+    -4px 4px #3367b0,
+    -5px 5px #3367b0;
 }
 
 .table-zebra tr th {
@@ -96,19 +124,22 @@ h1.poke-title {
   background: #a8b820;
 }
 .pokemon-type.normal {
-  background: #a8a878;
+  background: #d4d1c7;
+  color: #144370;
 }
 .pokemon-type.poison {
   background: #a040a0;
 }
 .pokemon-type.electric {
   background: #f8d030;
+  color: #144370;
 }
 .pokemon-type.ground {
-  background: #e0c068;
+  background: #695048;
 }
 .pokemon-type.fairy {
   background: #ee99ac;
+  color: #144370;
 }
 .pokemon-type.fighting {
   background: #c03028;
@@ -138,6 +169,10 @@ h1.poke-title {
   background: #a890f0;
 }
 
+.pagination span {
+  color: var(--blue);
+  margin: 0 0.5rem;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
