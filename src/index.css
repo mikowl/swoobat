@@ -55,7 +55,7 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url("src/assets/pokemonbg-retro.jpg");
+  background-image: url("/images/pokemonbg-retro.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
