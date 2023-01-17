@@ -62,36 +62,16 @@ body {
   background-attachment: fixed;
 }
 
-h1 {
+h1.poke-title {
   font-family: 'Pokemon Solid';
-  font-size: 4rem;
+  font-size: 3.5rem;
   line-height: 1.1;
-  letter-spacing: 4px;
-  font-size: 4rem;
+  letter-spacing: 5px;
   -webkit-text-stroke-width: 4px;
   -webkit-text-stroke-color: #3367b0;
   color: #ffcb03;
-  text-shadow: -1px 1px #3367b0,
-  -2px 2px #3367b0,
-  -3px 3px #3367b0,
-  -4px 4px #3367b0,
-  -5px 5px #3367b0;
-}
-
-h1.poke-title {
-  font-family: 'Pokemon Solid';
-  font-size: 4rem;
-  line-height: 1.1;
-  letter-spacing: 4px;
-    font-size: 4rem;
-    -webkit-text-stroke-width: 4px;
-    -webkit-text-stroke-color: #3367b0;
-    color: #ffcb03;
-    text-shadow: -1px 1px #3367b0,
-    -2px 2px #3367b0,
-    -3px 3px #3367b0,
-    -4px 4px #3367b0,
-    -5px 5px #3367b0;
+  text-shadow: -1px 1px #1d4987, -2px 2px #1d4987, -3px 3px #1d4987, -4px 4px #1d4987;
+  transform: rotate(-3deg);
 }
 
 .table-zebra tr th {
@@ -175,21 +155,19 @@ h1.poke-title {
 } */
 
 .spinner {
-  position: absolute;
-  top: 29%;
-  right: -10px;
   background: #316eba;
   background: var(--blue);
+  background: #f24646;
   border-radius: 50px;
   animation: rotate 2s linear infinite;
   z-index: 2;
-  margin-left: 7px;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .spinner .path {
   stroke: var(--yellow);
+  stroke: #FFF;
   stroke-linecap: round;
   animation: dash 1.5s ease-in-out infinite;
 }

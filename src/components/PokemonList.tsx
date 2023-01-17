@@ -38,11 +38,7 @@ const PokemonList3: React.FC = () => {
         }
       });
       const results = await Promise.all(promises);
-      // setResults({
-      //   pokemonList: results,
-      //   loading: false,
-      //   totalPages: 10
-      // });
+      console.log('results', results);
       return results;
     } catch (error) {
       console.warn('error', error);
@@ -66,7 +62,7 @@ const PokemonList3: React.FC = () => {
   const Spinner = () => (
     <div role="status">
       <svg className="spinner" viewBox="0 0 50 50">
-        <circle className="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="6"></circle>
       </svg>
     </div>
   );
@@ -83,12 +79,14 @@ const PokemonList3: React.FC = () => {
         </div>
       ) : (
           <>
-            <h1 className="poke-title">Pokedex</h1>
+            <h1 className="poke-title mb-8 mt-2">Pokedex</h1>
             <div className="pagination flex justify-between mb-4 mt-4">
               <button className="btn btn-secondary" onClick={() => setPage((old) => Math.max(old - 1, 0))} disabled={page === 0}>
                 Previous
               </button>{' '}
-              <span className="bg-[#e74c3c] rounded-full py-[10px] px-[20px] text-white inline-block">{page + 1}</span>{' '}
+                <span className={`flex items-center justify-center bg-[#f24646] w-12 h-12 border-white -translate-y-1 border-solid border-2 rounded-full font-bold py-[10px] px-[17px] shadow-sm text-white inline-block`}>
+                  {isPreviousData ? <Spinner /> : page + 1 }
+                </span>
               <button
                 className="btn btn-secondary relative"
                 onClick={() => {
@@ -98,15 +96,15 @@ const PokemonList3: React.FC = () => {
                 }}
                 disabled={isPreviousData}
               >
-                Next {isPreviousData && <Spinner />}
+                Next
               </button>
             </div>
-            <div className="grid justify-center grid-cols-4 gap-3 flex-wrap">
+            <div className="grid justify-center grid-cols-4 gap-4 flex-wrap">
             {(data as Pokemon[]).map((pokemon) => (
-              <div key={pokemon.id} className={`bg-white shadow-md text-secondary bg-opacity-60 px-2 py-2 rounded`}>
+              <div key={pokemon.id} className={`bg-white shadow-md text-secondary bg-opacity-60 px-2 py-2 rounded-xl transition-all hover:rotate-3 hover:-translate-y-1`}>
                 <div className="bg-blue-200 p-3 rounded bg-opacity-70">
                 <h3 className="capitalize mb-2 font-bold">{pokemon.name} <small className="text-xs">#{pokemon.id}</small></h3>
-                <img className="ml-auto mr-auto" width="96" height="96" src={pokemon.sprites.other?.["official-artwork"].front_default} alt={pokemon.name} />
+                <img className="ml-auto mr-auto mb-3" width="96" height="96" src={pokemon.sprites.other?.["official-artwork"].front_default} alt={pokemon.name} />
                 {pokemon.types.map((type) => (
                   <span key={type.slot} className={`pokemon-type ${type.type.name}`}>{type.type.name}</span>
                 ))}
