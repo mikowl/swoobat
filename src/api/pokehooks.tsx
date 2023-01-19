@@ -1,57 +1,44 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { Pokemon } from "../types/pokemon";
+import { Pokemon, Result } from "../types/pokemon";
 import axios from "axios";
 
 const POKE_API_URL = "https://pokeapi.co/api/v2/pokemon";
 
-const getPokemon = async (id: string) => {
-  let result: Pokemon = {} as Pokemon;
-  const data = await axios.get<Pokemon>(`${POKE_API_URL}/pokemon/${id}`);
-  if (data.status === 200) {
-    result = data.data;
+const getPokemonList = async (page: number) => {
+  const limit = 24;
+  const offset = 24 * page;
+  const url = `${POKE_API_URL}/?limit=${limit}&offset=${offset}`;
+
+  try {
+    //fetch pokemon list
+    const response = await fetch(url);
+    const data = await response.json();
+
+    // get all pokemons data
+    const promises = data.results.map(async (pokemon: Result) => {
+      try {
+        const response = await fetch(pokemon.url);
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    });
+    const results = await Promise.all(promises);
+    console.log("results", results);
+    return results;
+  } catch (error) {
+    console.warn("error", error);
   }
-  return result;
 };
 
-function usePokemon(id: string): UseQueryResult<Pokemon, Error> {
-  return useQuery(["pokemon", id], () => getPokemon(id), {
-    enabled: true,
-    refetchOnWindowFocus: false,
+const usePokemon = (page: number): UseQueryResult<Pokemon[], Error> => {
+  return useQuery({
+    queryKey: ["pokemonList", page],
+    queryFn: () => getPokemonList(page),
+    keepPreviousData: true,
+    staleTime: 1000 * 60 * 60 * 24,
   });
-}
-const fetchPokemons = async ({
-  pageParam = `${POKE_API_URL}?offset=0&limit=24`
-}) => {
-  const request = await fetch(pageParam);
-  const { results, next } = await request.json();
-  return { response: results, nextPage: next };
-}
+};
 
-const getPokemonByName = async (name: string) => {
-  const { data } = await axios.get(
-    `${POKE_API_URL}/${name}`
-  );
-  return data;
-}
-
-const getPokemonByUrl = async (url: string) => {
-  const { data } = await axios.get(url);
-  return data;
-}
-
-const getPokemonDetails = async (names: string[]) => {
-  const details = await axios.get(`${POKE_API_URL}/${names.join(",")}`);
-  return details.data;
-}
-
-const usePokemonList = () => {
-  return useQuery({ queryKey: ['pokemonList'], queryFn: fetchPokemons })
-}
-
-const usePokemonByUrl = (url: string) => {
-  return useQuery({ queryKey: ["pokemonByUrl", url], queryFn: () => getPokemonByUrl(url) });
-}
-
-export { usePokemon, usePokemonList, usePokemonByUrl, fetchPokemons, getPokemon, getPokemonByName, getPokemonDetails };
-
-
+export { getPokemonList, usePokemon };
