@@ -191,7 +191,7 @@ h1.poke-title {
 
 .flip {
   position: relative;
-  cursor: pointer/id;
+  cursor: pointer;
 }
 .flip > .front,
 .flip > .back {
