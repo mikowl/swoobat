@@ -220,6 +220,10 @@ h1.poke-title {
   transform: rotateY(0deg);
 }
 
+footer a {
+  color: #c7ed8d;
+  text-decoration: underline;
+}
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
