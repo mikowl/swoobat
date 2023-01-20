@@ -237,6 +237,11 @@ footer a {
 	color: #c7ed8d;
 	text-decoration: underline;
 }
+
+footer a:hover {
+	color: #edf9da;
+}
+
 @keyframes rotate {
 	100% {
 		transform: rotate(360deg);
