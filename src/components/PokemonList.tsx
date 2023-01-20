@@ -12,7 +12,7 @@ const PokemonList: React.FC = () => {
 
 	return (
 		<div>
-			{isInitialLoading ? (
+			{!isInitialLoading ? (
 				<Loading />
 			) : (
 				<>

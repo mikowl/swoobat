@@ -16,6 +16,7 @@
 	},
 	"plugins": ["react", "@typescript-eslint"],
 	"rules": {
+		"react/react-in-jsx-scope": "off",
 		"@typescript-eslint/require-await": "off",
 		"@typescript-eslint/restrict-plus-operands": "off",
 		"@typescript-eslint/restrict-template-expressions": "off",
