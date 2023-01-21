@@ -52,7 +52,6 @@ const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 				return "bg-gray-200";
 		}
 	});
-	console.log("cardColor", cardColor);
 
 	return (
 		<div className="flip" onClick={handleCardFlip}>
@@ -103,15 +102,10 @@ const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 							src={pokemon.sprites.back_default}
 							alt={pokemon.name}
 						/>
-						<h4 className="-mt-2 font-bold text-left border-b-2 border-blue-300">
-							Stats
-						</h4>
+						<h4 className="-mt-2 font-bold text-left border-b-2 border-blue-300">Stats</h4>
 						<ul className="p-0">
 							{pokemon.stats.map((stat) => (
-								<li
-									key={stat.stat.name}
-									className="m-1 text-sm font-semibold leading-4 text-left text-secondary"
-								>
+								<li key={stat.stat.name} className="m-1 text-sm font-semibold leading-4 text-left text-secondary">
 									{stat.stat.name}: {stat.base_stat}
 								</li>
 							))}

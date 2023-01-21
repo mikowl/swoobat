@@ -11,14 +11,12 @@ const getPokemonList = async (page: number) => {
 
 	try {
 		//fetch pokemon list
-		const response = await fetch(url);
-		const data = await response.json();
+		const { data } = await axios.get(url);
 
 		// get all pokemons data
 		const promises = data.results.map(async (pokemon: Result) => {
 			try {
-				const response = await fetch(pokemon.url);
-				const data = await response.json();
+				const { data } = await axios.get(pokemon.url);
 				return data;
 			} catch (error) {
 				console.log(error);
