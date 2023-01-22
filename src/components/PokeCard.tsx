@@ -1,6 +1,6 @@
 import React from "react";
 import { Pokemon } from "../types/pokemon";
-import { getCardColor } from "../api/pokehooks";
+import getCardColor from "../utils/pokecolors";
 
 const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 	// handle card flip

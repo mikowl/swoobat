@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pokemon } from "../types/pokemon";
 import PokeCard from "./PokeCard";
-import { usePokemon } from "../api/pokehooks";
+import { usePokemon } from "../utils/pokehooks";
 import { Loading, Spinner } from "./Loading";
 
 const PokemonList: React.FC = () => {
