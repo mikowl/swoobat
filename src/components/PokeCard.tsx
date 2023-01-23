@@ -1,6 +1,6 @@
-import React from "react";
 import { Pokemon } from "../types/pokemon";
 import getCardColor from "../utils/pokecolors";
+import getPokeIcon from "../utils/icontypes";
 
 const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 	// handle card flip
@@ -20,6 +20,7 @@ const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 				>
 					<div className={`h-[330px] ${cardColor[1]} p-3 relative rounded bg-opacity-80`}>
 						<small className="poke-id">#{pokemon.id}</small>
+						<span className="type-icons">{pokemon.types.map((type) => getPokeIcon(type.type.name))}</span>
 						<h3 className="font-bold capitalize poke-name">{pokemon.name} </h3>
 						{/* <p className="mt-2 text-sm font-medium base-exp exp">
 							Base exp: {pokemon.base_experience}
@@ -69,6 +70,7 @@ const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 								</li>
 							))}
 						</ul>
+						<div className="type-icons">{pokemon.types.map((type) => getPokeIcon(type.type.name))}</div>
 					</div>
 				</div>
 			</div>

@@ -178,9 +178,29 @@ h1.poke-title {
 	border-radius: 1rem 0 150px 0;
 	box-shadow: 3px 1px 0 rgba(0, 0, 0, 0.2);
 }
+
+.type-icons {
+	position: absolute;
+	right: 0;
+	top: 3px;
+}
+.type-icons svg {
+	margin: 0 5px;
+}
+
+.back .type-icons {
+	background: rgb(59 130 246 / 50%);
+	position: unset;
+	font-size: 1.75rem;
+	display: flex;
+	justify-content: center;
+	margin: 9px -12px 0 -12px;
+	padding: 7px 0;
+	border-radius: 0 0 5px 5px;
+}
 /* .pagination span {
-  color: var(--blue);
-  margin: 0 0.5rem;
+	color: var(--blue);
+	margin: 0 0.5rem;
 } */
 
 .spinner {
