@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Pokemon } from "../types/pokemon";
 import PokeCard from "./PokeCard";
 import { usePokemon } from "../utils/pokehooks";
-import { Loading, Spinner } from "./Loading";
+import BallSpinner from "./Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import Footer from "./Footer";
 
 const PokemonList: React.FC = () => {
 	const [page, setPage] = useState(0);
@@ -12,11 +15,13 @@ const PokemonList: React.FC = () => {
 
 	return (
 		<div>
+			<h1 className="mt-2 mb-8 poke-title">Pokedex</h1>
 			{isInitialLoading ? (
-				<Loading />
+				<>
+					<FontAwesomeIcon className="my-6 text-secondary" icon={faSpinner} size="2xl" pulse />
+				</>
 			) : (
 				<>
-					<h1 className="mt-2 mb-8 poke-title">Pokedex</h1>
 					<div className="grid max-w-[1100px] justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 flex-wrap">
 						{(data as Pokemon[]).map((pokemon) => (
 							<PokeCard key={pokemon.id} pokemon={pokemon} />
@@ -25,7 +30,10 @@ const PokemonList: React.FC = () => {
 					<div className="flex justify-between mt-10 mb-4 pagination">
 						<button
 							className="btn btn-secondary"
-							onClick={() => setPage((old) => Math.max(old - 1, 0))}
+							onClick={() => {
+								setPage((old) => Math.max(old - 1, 0));
+								setTimeout(scrollToTop, 100);
+							}}
 							disabled={page === 0}
 						>
 							Previous
@@ -35,7 +43,7 @@ const PokemonList: React.FC = () => {
 							<span
 								className={`flex items-center justify-center bg-[#f24646] w-12 h-12 border-white border-solid border-2 rounded-full font-bold py-[10px] px-[17px] shadow-sm text-white`}
 							>
-								{isPreviousData ? <Spinner /> : page + 1}
+								{isPreviousData ? <BallSpinner /> : page + 1}
 							</span>
 						</div>
 						<button
@@ -52,6 +60,7 @@ const PokemonList: React.FC = () => {
 							Next
 						</button>
 					</div>
+					{/* <Footer /> */}
 				</>
 			)}
 		</div>

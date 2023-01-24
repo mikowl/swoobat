@@ -124,6 +124,7 @@ h1.poke-title {
 .pokemon-type.electric {
 	background: #f8d030;
 	color: #144370;
+	border: 1px solid rgba(0, 0, 0, 0.15);
 }
 .pokemon-type.ground {
 	background: #695048;

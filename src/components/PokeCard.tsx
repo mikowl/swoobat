@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Pokemon } from "../types/pokemon";
 import getCardColor from "../utils/pokecolors";
 import getPokeIcon from "../utils/icontypes";
@@ -9,6 +10,7 @@ const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 		card.classList.toggle("active");
 	};
 
+	const [imgLoaded, setImgLoaded] = useState(false);
 	const pTypes = pokemon.types.map((type) => type.type.name);
 	const cardColor = pTypes.map(getCardColor);
 
@@ -26,11 +28,11 @@ const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 							Base exp: {pokemon.base_experience}
 						</p> */}
 						<img
-							loading="eager"
-							className="mb-3 ml-auto mr-auto"
+							className={`transition-all duration-500 mb-3 ml-auto mr-auto ${imgLoaded ? "opacity-100" : "opacity-0"}`}
 							width="175"
 							height="175"
 							src={pokemon.sprites.other?.["official-artwork"].front_default}
+							onLoad={() => setImgLoaded(true)}
 							alt={pokemon.name}
 						/>
 						{pokemon.types.map((type) => (
