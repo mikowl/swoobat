@@ -11,7 +11,7 @@ const PokemonList: React.FC = () => {
 	const [page, setPage] = useState(0);
 	const { data, isInitialLoading, error, isPreviousData } = usePokemon(page);
 
-	const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+	const scrollToTop = (): void => window.scrollTo({ top: 0, behavior: "smooth" });
 
 	return (
 		<div>
@@ -60,7 +60,7 @@ const PokemonList: React.FC = () => {
 							Next
 						</button>
 					</div>
-					{/* <Footer /> */}
+					<Footer />
 				</>
 			)}
 		</div>

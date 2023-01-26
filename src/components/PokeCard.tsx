@@ -10,7 +10,7 @@ const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 		card.classList.toggle("active");
 	};
 
-	const [imgLoaded, setImgLoaded] = useState(false);
+	const [imgLoaded, setImgLoaded] = useState<boolean>(false);
 	const pTypes = pokemon.types.map((type) => type.type.name);
 	const cardColor = pTypes.map(getCardColor);
 
