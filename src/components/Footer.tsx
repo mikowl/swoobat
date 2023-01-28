@@ -1,6 +1,6 @@
 const Footer = () => {
 	return (
-		<footer className="text-center max-w-4xl mx-auto">
+		<footer className="center mx-auto max-w-4xl">
 			<p style={{ textShadow: "0 0 25px #000" }}>
 				Mini project to learn/improve on{" "}
 				<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
