@@ -20,7 +20,6 @@ const PokeCard = ({ pokemon }: { pokemon: Pokemon }) => {
 				<div
 					className={`${cardColor[0]} bg-shadow-md bg-bg-text-secondary rounded-xl bg-opacity-80 px-2 py-2 transition-all hover:-translate-y-1 hover:rotate-3`}
 				>
-					<div className="scale-125 opacity-50 hover:scale-150 hover:opacity-75">Test</div>
 					<div className={`h-[330px] ${cardColor[1]} relative rounded bg-opacity-80 p-3`}>
 						<small className="poke-id">#{pokemon.id}</small>
 						<span className="type-icons">{pokemon.types.map((type) => getPokeIcon(type.type.name))}</span>

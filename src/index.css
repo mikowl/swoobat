@@ -233,6 +233,7 @@ h1.poke-title {
 	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	transition-duration: 0.75s;
 	transition-property: transform, opacity;
+	backface-visibility: hidden;
 }
 .flip > .front {
 	transform: rotateY(0deg);
