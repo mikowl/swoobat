@@ -17,9 +17,7 @@ const PokemonList: React.FC = () => {
 		<div>
 			<h1 className="poke-title mt-2 mb-8">Pokedex</h1>
 			{isInitialLoading ? (
-				<>
-					<FontAwesomeIcon className="my-6 text-secondary" icon={faSpinner} size="2xl" pulse />
-				</>
+				<img src="/pokeball.svg" alt="pokeball" className="w-8 mx-auto my-6 animate-spin" />
 			) : (
 				<>
 					<div className="grid max-w-[1100px] grid-cols-1 flex-wrap justify-center gap-5 md:grid-cols-2 lg:grid-cols-4">
